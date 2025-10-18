@@ -1,0 +1,48 @@
+# See https://help.github.com/articles/ignoring-files for more about ignoring files.
+
+# Environment variables
+.env
+.env.local
+
+# Rails
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/tmp/pids/*
+!/tmp/pids/.keep
+/tmp/cache/*
+!/tmp/cache/.keep
+/public/system
+/public/uploads
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/config/credentials/*.key
+
+# Database
+*.sqlite3
+*.sqlite3-*
+
+# Node modules (for frontend)
+/frontend/node_modules
+/frontend/dist
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Bundler
+/vendor/bundle
+
+# RSpec
+/spec/examples.txt

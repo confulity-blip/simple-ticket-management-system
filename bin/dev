@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Exit on error
+set -e
+
+# Load environment variables if .env exists
+if [ -f .env ]; then
+  export $(cat .env | grep -v '^#' | xargs)
+fi
+
+# Run foreman with Procfile.dev
+exec foreman start -f Procfile.dev "$@"
