@@ -2,10 +2,12 @@
 # exit on error
 set -o errexit
 
-# Configure bundler to skip development and test groups
-bundle config set --local deployment 'true'
-bundle config set --local without 'development test'
+# Install system dependencies for gems with native extensions
+apt-get update -qq && apt-get install -y libyaml-dev
 
-bundle install
+# Install only production dependencies
+bundle config set --local without 'development test'
+bundle install --jobs 4 --retry 3
+
 bundle exec rake db:migrate
 bundle exec rake db:seed
