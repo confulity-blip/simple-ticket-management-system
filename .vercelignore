@@ -1,0 +1,19 @@
+# Ignore all backend/Rails files - Vercel should only deploy frontend
+app/
+bin/
+config/
+db/
+lib/
+log/
+public/
+spec/
+storage/
+tmp/
+vendor/
+.ruby-version
+Gemfile
+Gemfile.lock
+Rakefile
+Procfile.dev
+render.yaml
+README.md
