@@ -7,7 +7,8 @@ import App from './App.vue'
 
 // Configure axios to send credentials (cookies) with every request
 axios.defaults.withCredentials = true
-axios.defaults.baseURL = 'http://localhost:3000'
+// Use environment variable for API URL, fallback to localhost for development
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
 const app = createApp(App)
 const pinia = createPinia()
