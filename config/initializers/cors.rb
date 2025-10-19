@@ -7,8 +7,16 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    # Allow requests from Vue dev server
-    origins "http://localhost:5173", "http://127.0.0.1:5173"
+    # Allow requests from Vue dev server and production frontend
+    origins_list = [
+      "http://localhost:5173",
+      "http://127.0.0.1:5173"
+    ]
+
+    # Add production frontend URL from environment variable
+    origins_list << ENV['FRONTEND_URL'] if ENV['FRONTEND_URL'].present?
+
+    origins(*origins_list)
 
     resource "*",
       headers: :any,

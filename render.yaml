@@ -1,0 +1,26 @@
+services:
+  # Rails API Backend
+  - type: web
+    name: ticket-api
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    startCommand: "bundle exec puma -C config/puma.rb"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ticket-db
+          property: connectionString
+      - key: RAILS_ENV
+        value: production
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: SECRET_KEY_BASE
+        generateValue: true
+
+  # PostgreSQL Database
+databases:
+  - name: ticket-db
+    plan: free
+    databaseName: ticket_production
+    user: ticket_user
