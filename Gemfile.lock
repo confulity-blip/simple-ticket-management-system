@@ -112,6 +112,8 @@ GEM
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
+    jwt (3.1.2)
+      base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -260,6 +262,7 @@ DEPENDENCIES
   debug
   factory_bot_rails
   faker
+  jwt
   kaminari
   pg (~> 1.1)
   puma (>= 5.0)

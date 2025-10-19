@@ -54,3 +54,6 @@ gem "kaminari"
 # Authorization
 gem "pundit"
 
+# JWT for token-based authentication
+gem "jwt"
+

@@ -4,11 +4,15 @@ class Api::SessionsController < ApplicationController
     user = User.find_by(email: params[:email]&.downcase)
 
     if user&.authenticate(params[:password])
-      # Create session
+      # Create session (for development/local)
       session[:user_id] = user.id
+
+      # Generate JWT token (for production/cross-domain)
+      token = JsonWebToken.encode(user_id: user.id)
 
       render json: {
         user: user_json(user),
+        token: token,
         message: 'Logged in successfully'
       }, status: :created
     else
